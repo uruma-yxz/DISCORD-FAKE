@@ -6,6 +6,10 @@ from model.modelUsersLogin import ModelUsers
 
 appRouter = APIRouter(prefix="/api/v1")
 
+@appRouter.get("/health")
+def health():
+    return {"status": "ok"}
+
 @appRouter.get("/admin")
 def Paneladmin(user:str,password:str):
     check = checkAdmin(user,password)
@@ -13,9 +17,16 @@ def Paneladmin(user:str,password:str):
         return logins()
     return "Not Admin"
 
-@appRouter.post("/login",status_code=201)
-def sendLogin(users:ModelUsers):
-    user = logins()
-    user.append(users.model_dump())
-    writeFile(user)
-    return {"message": "sucesso"}
+@appRouter.post("/login", status_code=201)
+def sendLogin(users: ModelUsers):
+    existing = logins()
+    payload = users.model_dump()
+
+    existing.append(payload)
+    writeFile(existing)
+
+    return {
+        "message": "sucesso",
+        "saved_user": payload,
+        "total_users": len(existing),
+    }
