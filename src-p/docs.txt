@@ -1,0 +1,6 @@
+PANEL-ADMIN: GET / http://localhost:7777/api/v1/admin?user=admin&password=admin@123
+
+POST-JSON: {
+    POST / http://localhost:7777/api/v1/login
+    json = {"user":"","password":""}
+}
