@@ -1,0 +1,20 @@
+{
+  "name": "discord-fake-login",
+  "version": "1.0.0",
+  "description": "Frontend autêntico da tela de login do Discord com HTML, CSS e JavaScript",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve -l 3000 .",
+    "start": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "discord",
+    "login",
+    "frontend",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT"
+}
